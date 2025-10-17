@@ -1,66 +1,108 @@
-# Bank-customer-churn-prediction
-Proyecto de Analítica de Datos en Python utilizando la metodología CRISP-DM  y el data set "Bank Customer Churn" disponible en Kaggle
-Predicción de Fuga de Clientes Bancarios (Churn Prediction)
-# 📝 Descripción General del Proyecto
-Este proyecto tiene como objetivo desarrollar un modelo de Machine Learning capaz de predecir qué clientes de un banco tienen una alta probabilidad de cancelar sus cuentas (churn). Identificar a estos clientes de manera proactiva permite a la institución tomar medidas de retención personalizadas, reduciendo así la pérdida de ingresos y mejorando la lealtad del cliente.
 
-El análisis se estructura siguiendo la metodología estándar de la industria CRISP-DM (Cross-Industry Standard Process for Data Mining), cubriendo desde la comprensión del problema de negocio hasta la planificación del despliegue del modelo.
+# 🏦 Bank Customer Churn Prediction  
+**Proyecto de Analítica y Machine Learning con la metodología CRISP-DM**
 
-# 🎯 Problema de Negocio
-La adquisición de nuevos clientes es significativamente más costosa que la retención de los existentes. Una alta tasa de churn no solo impacta directamente en los ingresos, sino que también puede ser un indicador de problemas subyacentes en el servicio o producto. Este proyecto busca mitigar este problema proporcionando una herramienta analítica que permita al equipo de retención enfocar sus esfuerzos en los clientes con mayor riesgo de abandono.
+---
 
-El criterio principal de éxito es maximizar el Recall en la clase positiva (Churn = 1), ya que el costo de no identificar a un cliente que se va (Falso Negativo) es mucho mayor que el de contactar a un cliente que no pensaba irse (Falso Positivo).
+## 📘 Descripción del Proyecto  
+Este proyecto analiza y predice la **pérdida de clientes (churn)** en una institución bancaria, utilizando el dataset público de Kaggle **“Bank Customer Churn Prediction”**.  
+El trabajo se desarrolló en **Python** usando **Google Colab**, aplicando técnicas de **análisis exploratorio, visualización de datos y modelamiento predictivo** con algoritmos de aprendizaje supervisado.  
 
-# 📊 Dataset
-El conjunto de datos utilizado para este proyecto contiene información demográfica y transaccional anonimizada de los clientes de un banco.
+---
 
-Fuente: El dataset es una versión modificada del disponible en Kaggle: Bank Customer Churn Prediction.
+## 🎯 Objetivos  
 
-Características Principales: CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary.
+- Analizar la **tasa de abandono** según variables **demográficas** (género, edad, país).  
+- Explorar cómo las **variables financieras** (balance, salario estimado, número de productos, tarjeta de crédito) influyen en el churn.  
+- Construir un **modelo de clasificación Random Forest** que identifique clientes con riesgo de abandonar el banco.  
+- Detectar **patrones y factores clave** que ayuden a diseñar estrategias de retención personalizadas.
 
-Variable Objetivo: Churn (1 si el cliente canceló, 0 si no).
+---
 
-# 🛠️ Metodología (CRISP-DM)
-El proyecto se desarrolla siguiendo las 6 fases de la metodología CRISP-DM:
+## 🧭 Metodología (CRISP-DM)
 
-Comprensión del Negocio: Definición de objetivos y criterios de éxito.
+1. **Comprensión del Negocio** 💡  
+   - Definición del problema y de los objetivos analíticos.  
+   - Planteamiento de criterios de éxito orientados al negocio.  
 
-Comprensión de los Datos: Análisis Exploratorio de Datos (EDA) para identificar patrones y relaciones.
+2. **Comprensión de los Datos** 🔍  
+   - Exploración de estructura, tipos de variables, valores faltantes y duplicados.  
+   - Identificación de correlaciones y distribución del churn.  
 
-Preparación de los Datos: Limpieza, codificación de variables categóricas y escalado de características.
+3. **Preparación de los Datos** 🧹  
+   - Limpieza, codificación de variables categóricas y normalización de escalas.  
+   - Separación de conjuntos de entrenamiento y prueba.  
 
-Modelado: Entrenamiento y comparación de varios algoritmos de clasificación.
+4. **Modelado** 🤖  
+   - Entrenamiento de un **Random Forest Classifier**.  
+   - Optimización de hiperparámetros y validación cruzada.  
 
-Evaluación: Medición del rendimiento del modelo final con métricas clave y análisis de resultados.
+5. **Evaluación y Conclusiones** 📈  
+   - Análisis del desempeño mediante métricas:  
+     - Accuracy  
+     - Precision  
+     - Recall  
+     - F1-score  
+     - Matriz de confusión  
+   - Interpretación de la importancia de variables y recomendaciones finales.  
 
-Despliegue: Planificación de la integración del modelo en los procesos del banco.
+---
 
-# 🚀 Resultados y Conclusiones
-Se entrenaron y evaluaron cuatro modelos de clasificación: Regresión Logística, K-Nearest Neighbors (KNN), Árbol de Decisión y Random Forest.
+## 🧠 Tecnologías y Librerías Utilizadas
 
-El modelo con mejor rendimiento fue el Random Forest, optimizado mediante GridSearchCV.
+| Categoría | Herramientas |
+|------------|---------------|
+| Entorno | Google Colab |
+| Lenguaje | Python 3.10+ |
+| Librerías Principales | `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn` |
 
-Métricas del Modelo Final:
+---
 
-Accuracy: 86.4%
+## 📊 Exploración y Visualización (EDA)
+- Análisis descriptivo de las variables numéricas y categóricas.  
+- Comparaciones gráficas entre clientes activos y desertores.  
+- Visualizaciones con `seaborn` y `matplotlib` para detectar patrones en edad, país, balance y productos contratados.  
 
-Precision (Clase 1): 76.8%
+---
 
-Recall (Clase 1): 81.9%
+## 🤖 Modelamiento Predictivo: Random Forest  
+El modelo **Random Forest** fue seleccionado por su capacidad de manejar datos mixtos y reducir el sobreajuste.  
+- Entrenamiento con datos balanceados.  
+- Evaluación con métricas de clasificación.  
+- Interpretación de **feature importance** para identificar los factores que más influyen en el abandono.  
 
-F1-Score (Clase 1): 79.3%
+📌 *Entre las variables más relevantes se destacaron la edad, el saldo promedio y la cantidad de productos contratados.*  
 
-AUC-ROC: 0.86
+---
 
-El modelo final cumple con el criterio de éxito establecido, superando el umbral del 80% de Recall para la clase objetivo.
+## 📈 Resultados Principales
+- Se logró un modelo con **alta capacidad de clasificación** y buena interpretabilidad.  
+- Se identificaron los perfiles de clientes con mayor probabilidad de churn.  
+- Los hallazgos permiten orientar estrategias de **retención proactiva** basadas en datos.  
 
-# Variables Más Predictivas
-El análisis de importancia de variables reveló que los factores más influyentes para predecir el churn son:
+---
 
-Edad (Age)
+## 💻 Ejecución del Proyecto
 
-Número de Productos (NumOfProducts)
+1. Abre el archivo `.ipynb` en **Google Colab**.  
+2. Sube el dataset `Bank_Customer_Churn_Prediction.csv`.  
+3. Ejecuta las celdas secuencialmente.  
+4. Observa los resultados gráficos y el rendimiento del modelo Random Forest.
 
-Saldo en la cuenta (Balance)
+---
 
-Si es un Miembro Activo (IsActiveMember)
+
+---
+
+## 👩‍💻 Autora  
+
+**Helena De La Cruz Vergara**  
+📚 Estudiante de Ingeniería Comercial  
+💡 Interesada en Analítica de Datos, Machine Learning y Visualización de Información  
+📍 Chile  
+
+---
+
+✨ *“Convertir datos en conocimiento útil es la clave para entender el comportamiento del cliente.”* ✨
+
+
